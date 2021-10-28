@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  php-fpm:
+    build:
+      context: app/php-fpm
+    volumes:
+      - ./code:/var/www
+  nginx:
+    build:
+      context: app/nginx
+    volumes:
+      - ./code:/var/www
+      - ./app/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./app/nginx/sites/:/etc/nginx/sites-available
+      - ./app/nginx/conf.d/:/etc/nginx/conf.d
+    depends_on:
+      - php-fpm
+    ports:
+        - "8000:80"
