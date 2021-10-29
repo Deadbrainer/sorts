@@ -15,3 +15,7 @@ After installation run command 'make start'.
 # 3. Open program in browser
 
 Open your browser and open 'localhost:8000'.
+
+# 4. Close the server
+
+Open the terminal in project and run command 'make stop'.
