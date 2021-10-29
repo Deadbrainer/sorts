@@ -1,4 +1,4 @@
-# Data and Algorithm Structure
+# Data and Algorithms Structure
 
 -Bubble sort
 -Linear sort
