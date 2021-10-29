@@ -15,38 +15,50 @@
 </style>
 </html>
 <?php
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
     $array = explode(',', $_POST['array']);
     echo "Entered array:\n";
-    foreach ($array as $item){
+
+    foreach ($array as $item) {
         echo $item . " ";
     }
+
     echo "<br>";
+
     $array = mergeSort($array);
+
     echo "Sorted array:\n";
+
     foreach ($array as $item) {
         echo $item . ' ';
     }
+
     echo "<br>";
     echo "<br>";
     echo "<a href='index.php'>Go to main menu</a>";
 }
-function mergeSort($array) {
-    if(count($array) == 1){
+
+function mergeSort($array): array
+{
+    if (count($array) == 1) {
         return $array;
     }
 
-    $middle = count($array)/2;
-    $left = array_slice($array, 0, $middle);
-    $right = array_slice($array, $middle);
+    $middle = count($array) / 2;
+    $left   = array_slice($array, 0, $middle);
+    $right  = array_slice($array, $middle);
 
     return merge(mergeSort($left), mergeSort($right));
 }
 
-function merge($left, $right): array {
+function merge($left, $right): array
+{
     $sortedArray = [];
+    $leftSize = count($left);
+    $rightSize = count($right);
 
-    for ($leftSize = count($left), $rightSize = count($right); $leftSize > 0 && $rightSize > 0;) {
+    for (;$leftSize > 0 && $rightSize > 0;) {
         if ($left[0] < $right[0]) {
             array_push($sortedArray, array_shift($left));
             $leftSize--;
